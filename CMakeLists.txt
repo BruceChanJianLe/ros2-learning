@@ -50,6 +50,18 @@ install(TARGETS
   DESTINATION lib/${PROJECT_NAME}
 )
 
+# Example 3, listener
+add_executable(listener
+  src/listener_node.cpp
+  src/listener.cpp
+)
+ament_target_dependencies(listener rclcpp std_msgs)
+
+install(TARGETS
+  listener
+  DESTINATION lib/${PROJECT_NAME}
+)
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
