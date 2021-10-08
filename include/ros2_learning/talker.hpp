@@ -3,7 +3,6 @@
 
 // ROS2
 #include <rclcpp/rclcpp.hpp>
-#include <rclcpp/executors.hpp>
 
 // msgs
 #include <std_msgs/msg/int64.hpp>
