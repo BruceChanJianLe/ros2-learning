@@ -19,8 +19,6 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
-find_package(ghost_manager_interfaces REQUIRED)
-find_package(ghost_bms_interfaces REQUIRED)
 
 include_directories(
   include
