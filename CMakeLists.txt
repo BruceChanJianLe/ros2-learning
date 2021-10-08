@@ -26,6 +26,7 @@ include_directories(
   include
 )
 
+# Example 1, talker
 add_executable(talker
   src/talker_node.cpp
   src/talker.cpp
@@ -34,6 +35,18 @@ ament_target_dependencies(talker rclcpp std_msgs)
 
 install(TARGETS
   talker
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+# Example 2, talker
+add_executable(talker2
+  src/talker2_node.cpp
+  src/talker2.cpp
+)
+ament_target_dependencies(talker2 rclcpp std_msgs)
+
+install(TARGETS
+  talker2
   DESTINATION lib/${PROJECT_NAME}
 )
 
