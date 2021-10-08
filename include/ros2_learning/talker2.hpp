@@ -7,7 +7,7 @@
 // msgs
 #include <std_msgs/msg/int64.hpp>
 
-// Cpp and STL
+// CPP and STL
 #include <chrono>
 #include <string>
 #include <memory>
