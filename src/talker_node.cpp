@@ -2,7 +2,7 @@
 
 constexpr auto ROS2NODENAME = "talker_node";
 
-int main(int argc, char ** argv)
+int main(int argc, char * argv[])
 {
     rclcpp::init(argc, argv);
     rclcpp::spin(std::make_shared<ros_learning::talker>(ROS2NODENAME));
