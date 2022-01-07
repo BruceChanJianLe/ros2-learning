@@ -51,7 +51,7 @@ namespace ros_learning
             ++msg.data;
 
             // Print in terminal
-            RCLCPP_INFO(this->get_logger(), "I published %i", msg.data);
+            RCLCPP_INFO(this->get_logger(), "I published %li", msg.data);
 
             r.sleep();
         }
