@@ -38,23 +38,14 @@ namespace ros_learning
 
     void talker::run()
     {
-        // Rate of publish
-        rclcpp::WallRate r(1);
-
         // Prepare msg
         auto msg = std_msgs::msg::Int64();
-        msg.data = 0;
+        msg.data = this->count_;
 
-        while(rclcpp::ok())
-        {
-            pub_->publish(msg);
-            ++msg.data;
+        pub_->publish(msg);
+        ++count_;
 
-            // Print in terminal
-            RCLCPP_INFO(this->get_logger(), "I published %li", msg.data);
-
-            r.sleep();
-        }
-
+        // Print in terminal
+        RCLCPP_INFO(this->get_logger(), "I published %li", msg.data);
     }
 } // namespace ros_learning
