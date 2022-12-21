@@ -20,7 +20,7 @@ namespace ros_learning
 
     void listener::subCallback(const std_msgs::msg::Int64::SharedPtr msg) const
     {
-        RCLCPP_INFO(this->get_logger(), "I heard: %i", msg->data);
+        RCLCPP_INFO(this->get_logger(), "I heard: %li", msg->data);
     }
 
 } // namespace ros_learning
