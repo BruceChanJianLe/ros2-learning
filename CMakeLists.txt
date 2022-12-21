@@ -60,6 +60,17 @@ install(TARGETS
   DESTINATION lib/${PROJECT_NAME}
 )
 
+# Example 4, listener
+add_executable(timer_examples
+  src/timer_examples.cpp
+)
+ament_target_dependencies(timer_examples rclcpp std_msgs)
+
+install(TARGETS
+  timer_examples
+  DESTINATION lib/${PROJECT_NAME}
+)
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
