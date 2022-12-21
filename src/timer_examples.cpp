@@ -43,3 +43,5 @@ int main(int argc, char * argv[])
 
   return 0;
 }
+
+// Reference: https://github.com/ros2/rclcpp/issues/315
