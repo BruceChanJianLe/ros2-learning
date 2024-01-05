@@ -3,11 +3,8 @@
 namespace ros_learning
 {
     talker::talker()
-    : Node("talker_node")
-    ,   count_(0)
+    : talker("talker_node")
     {
-        pub_ = this->create_publisher<std_msgs::msg::Int64>("talker/channel", 1);
-        run();
     }
 
     talker::talker(const std::string & node_name)
