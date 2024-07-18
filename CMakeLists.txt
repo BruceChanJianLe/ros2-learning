@@ -6,10 +6,17 @@ if(NOT CMAKE_C_STANDARD)
   set(CMAKE_C_STANDARD 99)
 endif()
 
-# Default to C++14
+# Default to C++17/20
 if(NOT CMAKE_CXX_STANDARD)
-  set(CMAKE_CXX_STANDARD 14)
+  if("$ENV{ROS_DISTRO}" STREQUAL "foxy" OR "$ENV{ROS_DISTRO}" STREQUAL "galactic")
+    set(CMAKE_CXX_STANDARD 17)
+  else()
+    set(CMAKE_CXX_STANDARD 20)
+  endif()
+  set(CMAKE_CXX_STANDARD_REQUIRED ON)
 endif()
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -19,18 +26,21 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-find_package(rclcpp REQUIRED)
-find_package(std_msgs REQUIRED)
-
-include_directories(
-  include
+set(dependencies
+  rclcpp
+  std_msgs
 )
+
+foreach(pkg IN LISTS dependencies)
+  find_package(${pkg} REQUIRED)
+endforeach()
 
 # Example 1, talker
 add_executable(talker
   src/talker_node.cpp
   src/talker.cpp
 )
+target_include_directories(talker PUBLIC include)
 ament_target_dependencies(talker rclcpp std_msgs)
 
 install(TARGETS
@@ -43,6 +53,7 @@ add_executable(talker2
   src/talker2_node.cpp
   src/talker2.cpp
 )
+target_include_directories(talker2 PUBLIC include)
 ament_target_dependencies(talker2 rclcpp std_msgs)
 
 install(TARGETS
@@ -55,6 +66,7 @@ add_executable(listener
   src/listener_node.cpp
   src/listener.cpp
 )
+target_include_directories(listener PUBLIC include)
 ament_target_dependencies(listener rclcpp std_msgs)
 
 install(TARGETS
@@ -66,6 +78,7 @@ install(TARGETS
 add_executable(timer_examples
   src/timer_examples.cpp
 )
+target_include_directories(timer_examples PUBLIC include)
 ament_target_dependencies(timer_examples rclcpp std_msgs)
 
 install(TARGETS
