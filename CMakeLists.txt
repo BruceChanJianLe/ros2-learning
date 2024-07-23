@@ -41,7 +41,7 @@ add_executable(talker
   src/talker.cpp
 )
 target_include_directories(talker PUBLIC include)
-ament_target_dependencies(talker rclcpp std_msgs)
+ament_target_dependencies(talker ${dependencies})
 
 install(TARGETS
   talker
@@ -54,7 +54,7 @@ add_executable(talker2
   src/talker2.cpp
 )
 target_include_directories(talker2 PUBLIC include)
-ament_target_dependencies(talker2 rclcpp std_msgs)
+ament_target_dependencies(talker2 ${dependencies})
 
 install(TARGETS
   talker2
@@ -67,7 +67,7 @@ add_executable(listener
   src/listener.cpp
 )
 target_include_directories(listener PUBLIC include)
-ament_target_dependencies(listener rclcpp std_msgs)
+ament_target_dependencies(listener ${dependencies})
 
 install(TARGETS
   listener
@@ -79,7 +79,7 @@ add_executable(timer_examples
   src/timer_examples.cpp
 )
 target_include_directories(timer_examples PUBLIC include)
-ament_target_dependencies(timer_examples rclcpp std_msgs)
+ament_target_dependencies(timer_examples ${dependencies})
 
 install(TARGETS
   timer_examples
